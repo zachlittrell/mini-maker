@@ -26,16 +26,18 @@ def create_mini(front_side,back_side=None,size=sizes['standard']):
   scaled_back_side = back_side.copy()
   scaled_back_side.thumbnail(THUMBNAIL_SIZE,Image.ANTIALIAS)
   width,height = scaled_front_side.size
-  output_image = Image.new("RGBA", (max(DIVISION_BAR_WIDTH,width),
-                                    DIVISION_BAR_HEIGHT + (height * 2)))
+  output_width = max(DIVISION_BAR_WIDTH,width)
+  output_height = DIVISION_BAR_HEIGHT + (height * 2)
+  output_image = Image.new("RGBA", (output_width,output_height))
   #Draw Top Image
-  output_image.paste(scaled_front_side,(0,0))
+  output_image_x = (output_width/2)-(width/2)
+  output_image.paste(scaled_front_side,(output_image_x,0))
   #Draw Bottom Image
   output_image.paste(scaled_back_side.transpose(Image.FLIP_TOP_BOTTOM),
-                     (0,height + DIVISION_BAR_HEIGHT))
+                     (output_image_x,height + DIVISION_BAR_HEIGHT))
   #Draw middle division bar
   draw = ImageDraw.Draw(output_image)
-  division_bar_x = (width/2) - (DIVISION_BAR_WIDTH/2)
+  division_bar_x = (output_width/2) - (DIVISION_BAR_WIDTH/2)
   draw.rectangle([division_bar_x, height,
                   division_bar_x+DIVISION_BAR_WIDTH, height+DIVISION_BAR_HEIGHT],
 		  fill="black")
