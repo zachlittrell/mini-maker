@@ -8,4 +8,4 @@ Run the script via:
 
 python mini_maker.py _ImageFile_
 
-And it will save the eesulting mini at _ImageFile_-mini.png.
+And it will save the resulting mini at _ImageFile_-mini.png.
