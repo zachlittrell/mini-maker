@@ -1,13 +1,12 @@
 import Image,ImageDraw
 from sys import argv
 
-THUMBNAIL_SIZE = (300,300)
-DIVISION_BAR_WIDTH = 80
-DIVISION_BAR_HEIGHT = 24
+sizes = {'standard' : ((300,300),80,24)}
 
-def create_mini(image):
+def create_mini(image,size=sizes['standard']):
   """Returns a new image of a mini with the image scaled on the top,
      a flipped copy on the bottom, and a division bar inbetween"""
+  THUMBNAIL_SIZE,DIVISION_BAR_WIDTH,DIVISION_BAR_HEIGHT = size
   scaled_image = image.copy()
   scaled_image.thumbnail(THUMBNAIL_SIZE,Image.ANTIALIAS)
   width,height = scaled_image.size
