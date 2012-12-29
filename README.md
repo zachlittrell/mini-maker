@@ -9,3 +9,7 @@ Run the script via:
 python mini_maker.py _ImageFile_
 
 And it will save the resulting mini at _ImageFile_-mini.png.
+
+Can have the following optional arguments:
+
+-s,--size  :  Specify the size as either small or standard.
