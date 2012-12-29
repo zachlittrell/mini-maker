@@ -1,7 +1,8 @@
+from argparse import ArgumentParser
 import Image,ImageDraw
-from sys import argv
 
-sizes = {'standard' : ((300,300),80,24)}
+sizes = {'small' : ((100,100),80,24),
+         'standard' : ((300,300),80,24)}
 
 def create_mini(image,size=sizes['standard']):
   """Returns a new image of a mini with the image scaled on the top,
@@ -27,4 +28,12 @@ def create_mini(image,size=sizes['standard']):
   return output_image
 
 if __name__=="__main__":
-  create_mini(Image.open(argv[1])).save(argv[1]+"-mini.png","PNG")
+  parser = ArgumentParser(description="Creates paper minis from images")
+  parser.add_argument('-s,--size', 
+                      dest='size',
+		      help='The size of the mini. Either small or standard.',
+		      default='standard')
+  parser.add_argument('filename',
+		       help='The name of the image to use for the mini')
+  args = parser.parse_args()
+  create_mini(Image.open(args.filename),sizes[args.size]).save(args.filename+"-mini.png","PNG")
