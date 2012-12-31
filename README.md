@@ -12,5 +12,6 @@ And it will save the resulting mini at _ImageFile_-mini.png.
 
 Can have the following optional arguments:
 
--s,--size  :  Specify the size as either small or standard.
+-s,--size  :  Specify the size as either small or medium.
+
 -b,--backside  :  Specify the image to use for the backside of the mini.

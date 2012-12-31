@@ -2,7 +2,7 @@ from argparse import ArgumentParser
 import Image,ImageDraw
 
 sizes = {'small' : ((100,100),80,24),
-         'standard' : ((300,300),80,24)}
+         'medium' : ((300,300),80,24)}
 
 def size_same(image1,image2):
   """Returns a 2-tuple containing copies of image1 and image2
@@ -13,7 +13,7 @@ def size_same(image1,image2):
   return (image1.resize(size,Image.ANTIALIAS),
           image2.resize(size,Image.ANTIALIAS))
 
-def create_mini(front_side,back_side=None,size=sizes['standard']):
+def create_mini(front_side,back_side=None,size=sizes['medium']):
   """Returns a new image of a mini with the image scaled on the top,
      a flipped copy on the bottom, and a division bar inbetween"""
   THUMBNAIL_SIZE,DIVISION_BAR_WIDTH,DIVISION_BAR_HEIGHT = size
@@ -48,8 +48,8 @@ if __name__=="__main__":
   parser = ArgumentParser(description="Creates paper minis from images")
   parser.add_argument('-s','--size', 
                       dest='size',
-		      help='The size of the mini. Either small or standard.',
-		      default='standard')
+		      help='The size of the mini. Either small or medium.',
+		      default='medium')
   parser.add_argument('-b','--backside',
                       dest='back_side',
 		      help='The backside of the mini. If omitted, both sides are the same.')
