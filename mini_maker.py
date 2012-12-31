@@ -39,18 +39,18 @@ def create_mini(front_side,back_side=None,size=sizes['standard']):
   draw = ImageDraw.Draw(output_image)
   division_bar_x = (output_width/2) - (DIVISION_BAR_WIDTH/2)
   draw.rectangle([division_bar_x, height,
-                  division_bar_x+DIVISION_BAR_WIDTH, height+DIVISION_BAR_HEIGHT],
+                  division_bar_x+DIVISION_BAR_WIDTH-1, height+DIVISION_BAR_HEIGHT-1],
 		  fill="black")
   del draw
   return output_image
 
 if __name__=="__main__":
   parser = ArgumentParser(description="Creates paper minis from images")
-  parser.add_argument('-s,--size', 
+  parser.add_argument('-s','--size', 
                       dest='size',
 		      help='The size of the mini. Either small or standard.',
 		      default='standard')
-  parser.add_argument('-b,--backside',
+  parser.add_argument('-b','--backside',
                       dest='back_side',
 		      help='The backside of the mini. If omitted, both sides are the same.')
   parser.add_argument('filename',
