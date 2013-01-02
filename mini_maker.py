@@ -1,8 +1,10 @@
 from argparse import ArgumentParser
 import Image,ImageDraw
 
-sizes = {'small' : ((100,100),80,24),
-         'medium' : ((300,300),80,24)}
+sizes = {'small'  : ((100,100),80,24),
+         'medium' : ((200,200),80,24),
+	 'large'  : ((300,300),80,24),
+	 'huge'   : ((400,400),178,32)}
 
 def size_same(image1,image2):
   """Returns a 2-tuple containing copies of image1 and image2
